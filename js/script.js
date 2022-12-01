@@ -47,7 +47,7 @@ window.addEventListener("click", () => {
 });
 
 player.addEventListener("ended", () => {
-  player.src = "audio/happy-santa.mp3";
+  player.src = "audio/happy-santa.ogg";
   player.pause();
   player.load();
   player.play();
