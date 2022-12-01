@@ -9,10 +9,6 @@ const btnPrev = gallery.querySelector(".control--prev");
 const btnNext = gallery.querySelector(".control--next");
 const btnClose = gallery.querySelector(".control--close");
 
-const player = document.querySelector(".music__player");
-const btnPause = document.querySelector(".music__pause");
-const btnPauseText = btnPause.querySelector(".music__span")
-
 const sources = document.querySelector(".sources__list")
 const btnSrc = document.querySelector(".sources__btn")
 
@@ -22,7 +18,6 @@ const ding = new Audio("audio/ding.mp3");
 
 /* LOCAL STORAGE */
 
-let isMusic = true;
 let isStorage = true;
 
 try {
@@ -31,44 +26,9 @@ try {
       candies[i].classList.add("crashed");
     }
   };
-  isMusic = localStorage.getItem("music");
 } catch (error) {
   isStorage = false;
 }
-
-/* MUSIC BACKGROUND */
-
-window.addEventListener("click", () => {
-    if (isMusic) {
-      player.volume = 0.15;
-      player.play();
-    };
-    isMusic = false;
-});
-
-player.addEventListener("ended", () => {
-  player.src = "audio/happy-santa.ogg";
-  player.pause();
-  player.load();
-  player.play();
-})
-
-btnPause.addEventListener("click", () => {
-  if (player.paused) {
-    player.volume = 0.15;
-    player.play();
-    btnPauseText.innerText = "Pause";
-    if (isStorage) {
-      localStorage.setItem("music", true);
-    }
-  } else {
-    player.pause();
-    btnPauseText.innerText = "Play";
-    if (isStorage) {
-      localStorage.setItem("music", false);
-    }
-  }
-})
 
 /* CANDY BUTTONS */
 
